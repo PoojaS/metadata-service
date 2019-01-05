@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind : ReplicaSet
+metadata :
+  name : replica-set-demo
+spec :
+  replicas : 3
+  selector :
+    matchLabels:
+      app : replica-demo-pods
+  template:
+    metadata:
+      labels:
+        app: replica-demo-pods
+    spec:
+      containers:
+      - name: replica-metadata-service-container
+        image: poojasub/metadata-service:1.0
+        ports:
+        - containerPort: 8080

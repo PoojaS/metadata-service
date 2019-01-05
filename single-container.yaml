@@ -1,0 +1,10 @@
+apiVersion: v1
+kind : Pod
+metadata :
+  name : pod-demo
+spec :
+  containers :
+  - name : pod-metadata-service-container
+    image : poojasub/metadata-service:1.0
+    ports :
+    - containerPort: 8080

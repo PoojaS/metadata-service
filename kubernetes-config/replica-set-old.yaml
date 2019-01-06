@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind : ReplicaSet
+metadata :
+  name : replica-set-demo-10
+spec :
+  replicas : 3
+  selector :
+    matchLabels:
+      app : replica-demo-pods-10
+  template:
+    metadata:
+      labels:
+        app: replica-demo-pods-10
+    spec:
+      containers:
+      - name: replica-metadata-service-container-10
+        image: poojasub/metadata-service:1.0
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /actuator/info
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 4

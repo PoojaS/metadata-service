@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind : ReplicaSet
+metadata :
+  name : replica-set-demo-mongo
+spec :
+  replicas : 1
+  selector :
+    matchLabels:
+      app : replica-mongo-pod
+  template:
+    metadata:
+      labels:
+        app: replica-mongo-pod
+    spec:
+      containers:
+      - name: replica-mongo-container
+        image: mongo
+        ports:
+        - containerPort: 27017
